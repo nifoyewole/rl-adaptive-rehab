@@ -1,0 +1,46 @@
+Running the experiments
+
+The four commands below reproduce all results in the results/ folder. Please run them in order from the project root with your virtual environment activated.
+
+Step 1: Install dependencies
+RUN: pip install -r requirements.txt
+
+
+
+Step 2: Train all agents across all severity profiles
+RUN: python -m src.training.train --all --episodes 1000
+
+This trains Q-Learning and DQN (plus evaluates the three baselines) on mild, moderate, and severe patient profiles in sequence. Each profile runs 1,000 episodes. 
+Training prints a progress update every 100 episodes showing the rolling mean reward and current epsilon value. 
+A summary table is printed at the end of each profile showing mean reward, success rate, and final ROM for all five policies. Expect roughly 5–15 minutes total depending on hardware. 
+Results are saved to results/mild_results.json, results/moderate_results.json, and results/severe_results.json. 
+Trained model weights are saved as results/[profile]_dqn.pt and results/[profile]_q_table.pkl.
+
+
+
+Step 3: Generate charts and business metrics
+RUN: python -m src.evaluation.plots --all
+
+Loads the JSON result files and generates PNG charts for each profile: learning curves showing episode reward over training, and a policy comparison bar chart showing mean reward and success rate for all five policies.
+Also generates the cross-profile robustness chart comparing Q-Learning and DQN across all three severity levels, and saves business metrics (estimated cost per session, sessions saved versus static baseline) to results/[profile]_business_metrics.json.
+File paths are printed as each chart is saved.
+
+
+
+Step 4: Reward function ablation study
+RUN: python -m src.training.ablation
+
+Runs DQN five times on the moderate profile with different reward weight configurations, isolating the contribution of each reward component. 
+The configurations tested are: the full model (α=2.0, β=0.3, γ=0.1), no fatigue penalty (β=0), no cost penalty (γ=0), high cost penalty (γ=0.3), and recovery only (both penalties removed). 
+Each configuration runs for 1,000 episodes. The terminal prints a progress line for each configuration as it finishes, then displays a summary table showing mean reward, success rate, mean final fatigue, estimated cost, and policy stability (standard deviation of late-episode rewards). 
+Expect roughly 5–15 minutes total depending on hardware. 
+Results are saved to results/ablation_results.json.
+
+
+
+Step 5: Generate ablation chart
+RUN: python -m src.evaluation.plots --ablation
+
+Reads results/ablation_results.json and generates a three-panel chart saved to results/ablation_results.png. 
+The left panel shows recovery success rate per configuration, the middle panel shows mean final patient fatigue with an overtraining risk threshold line at 80, and the right panel shows policy stability (variance of late-episode rewards). 
+Together these three panels make the safety-efficacy-stability tradeoff in the reward function design immediately visible.

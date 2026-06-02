@@ -1,0 +1,76 @@
+{
+  "profile": "moderate",
+  "n_episodes": 1000,
+  "ablation": [
+    {
+      "name": "Full model (current)",
+      "alpha": 2.0,
+      "beta": 0.3,
+      "gamma": 0.1,
+      "mean_reward": 58.05,
+      "std_reward": 37.69,
+      "late_reward_std": 33.62,
+      "success_rate": 40.5,
+      "mean_steps": 44.6,
+      "mean_final_rom": 78.83,
+      "mean_final_fatigue": 98.78,
+      "est_cost_eur": 106.98
+    },
+    {
+      "name": "No fatigue penalty (\u03b2=0)",
+      "alpha": 2.0,
+      "beta": 0.0,
+      "gamma": 0.1,
+      "mean_reward": 97.75,
+      "std_reward": 29.08,
+      "late_reward_std": 20.72,
+      "success_rate": 52.1,
+      "mean_steps": 42.8,
+      "mean_final_rom": 83.27,
+      "mean_final_fatigue": 81.63,
+      "est_cost_eur": 102.68
+    },
+    {
+      "name": "No cost penalty (\u03b3=0)",
+      "alpha": 2.0,
+      "beta": 0.3,
+      "gamma": 0.0,
+      "mean_reward": 61.26,
+      "std_reward": 37.83,
+      "late_reward_std": 33.12,
+      "success_rate": 40.6,
+      "mean_steps": 44.6,
+      "mean_final_rom": 78.7,
+      "mean_final_fatigue": 98.71,
+      "est_cost_eur": 107.13
+    },
+    {
+      "name": "High cost penalty (\u03b3=0.3)",
+      "alpha": 2.0,
+      "beta": 0.3,
+      "gamma": 0.3,
+      "mean_reward": 49.53,
+      "std_reward": 38.31,
+      "late_reward_std": 33.45,
+      "success_rate": 38.6,
+      "mean_steps": 44.7,
+      "mean_final_rom": 78.54,
+      "mean_final_fatigue": 98.91,
+      "est_cost_eur": 107.19
+    },
+    {
+      "name": "Recovery only (\u03b2=0, \u03b3=0)",
+      "alpha": 2.0,
+      "beta": 0.0,
+      "gamma": 0.0,
+      "mean_reward": 109.19,
+      "std_reward": 25.58,
+      "late_reward_std": 14.73,
+      "success_rate": 66.8,
+      "mean_steps": 41.1,
+      "mean_final_rom": 86.59,
+      "mean_final_fatigue": 37.38,
+      "est_cost_eur": 98.57
+    }
+  ]
+}

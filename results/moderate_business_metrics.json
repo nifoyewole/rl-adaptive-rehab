@@ -1,0 +1,40 @@
+{
+  "profile": "moderate",
+  "metrics": {
+    "Static Schedule": {
+      "mean_steps": 47.4,
+      "estimated_cost_eur": 113.66,
+      "cost_saving_vs_static_eur": 0.0,
+      "efficiency_gain_pct": 0.0,
+      "success_rate_pct": 22.3
+    },
+    "Heuristic Clinical Policy": {
+      "mean_steps": 48.1,
+      "estimated_cost_eur": 115.5,
+      "cost_saving_vs_static_eur": -1.84,
+      "efficiency_gain_pct": -1.6,
+      "success_rate_pct": 19.4
+    },
+    "Random Policy": {
+      "mean_steps": 47.0,
+      "estimated_cost_eur": 112.81,
+      "cost_saving_vs_static_eur": 0.85,
+      "efficiency_gain_pct": 0.7,
+      "success_rate_pct": 26.5
+    },
+    "Q-Learning": {
+      "mean_steps": 44.7,
+      "estimated_cost_eur": 107.28,
+      "cost_saving_vs_static_eur": 6.38,
+      "efficiency_gain_pct": 5.6,
+      "success_rate_pct": 41.5
+    },
+    "DQN": {
+      "mean_steps": 44.5,
+      "estimated_cost_eur": 106.78,
+      "cost_saving_vs_static_eur": 6.88,
+      "efficiency_gain_pct": 6.1,
+      "success_rate_pct": 40.8
+    }
+  }
+}
